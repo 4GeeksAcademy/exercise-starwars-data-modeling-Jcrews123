@@ -7,23 +7,65 @@ from eralchemy2 import render_er
 
 Base = declarative_base()
 
-class Person(Base):
-    __tablename__ = 'person'
-    # Here we define columns for the table person
-    # Notice that each column is also a normal Python instance attribute.
-    id = Column(Integer, primary_key=True)
+class People(Base):
+    __tablename__ = 'people'
+    uid = Column(Integer, primary_key=True)
+    _id = Column(String(50), nullable=False)
     name = Column(String(250), nullable=False)
+    height = Column(float)
+    mass = Column(Integer)
+    hair_color = Column(String(20))
+    skin_color = Column(String(20))
+    eye_color = Column(String(20))
+    birth_year = Column(String(20))
+    gender = Column(String(20))
+    created = Column(String(50))
+    edited = Column(String(50))
+    homeworld = Column(String(50))
+    url = Column(String(50), nullable=False)
+    description = Column(String(100))
 
-class Address(Base):
+class Planets(Base):
     __tablename__ = 'address'
-    # Here we define columns for the table address.
-    # Notice that each column is also a normal Python instance attribute.
-    id = Column(Integer, primary_key=True)
-    street_name = Column(String(250))
-    street_number = Column(String(250))
-    post_code = Column(String(250), nullable=False)
-    person_id = Column(Integer, ForeignKey('person.id'))
-    person = relationship(Person)
+    uid = Column(Integer, primary_key=True)
+    _id = Column(String(50), nullable=False)
+    name = Column(String(250), nullable=False)
+    diameter = Column(Integer)
+    rotation_period = Column(Integer)
+    orbital_period = Column(Integer)
+    gravity = Column(String(50))
+    population = Column(Integer)
+    climate = Column(String(50))
+    terrain = Column(String(50))
+    surface_water = Column(Integer)
+    created = Column(String(100))
+    description = Column(String(100))
+    
+class Species(Base):
+    __tablename__ = 'species'
+    uid = Column(Integer, primary_key=True)
+    _id = Column(String(50), nullable=False)
+    name = Column(String(250), nullable=False)
+    classification = Column(String(50))
+    designation = Column(String(50))
+    average_height = Column(Integer)
+    average_lifespan = Column(Integer)
+    hair_colors = Column(String(100))
+    skin_colors = Column(String(100))
+    eye_colors = Column(String(50))
+    homeworld = Column(String(50))
+    language = Column(String(50))
+    people = Column(String(300))
+    created = Column(String(50))
+    edited = Column(String(50))
+    url = Column(String(50))
+    description = Column(String(50))
+
+
+
+
+
+
 
     def to_dict(self):
         return {}
